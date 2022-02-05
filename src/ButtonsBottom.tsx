@@ -7,5 +7,9 @@ interface ButtonsBottomProps extends ComponentProps<any> {
 export const ButtonsBottom: Component<ButtonsBottomProps> = (
   p: ButtonsBottomProps
 ) => {
-  return <div class="justify-end space-x-2 card-actions">{p.children}</div>;
+  return (
+    <div class="justify-end space-x-2 card-actions p-2 w-full">
+      {p.children}
+    </div>
+  );
 };
