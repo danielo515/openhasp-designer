@@ -7,8 +7,12 @@ import Row from "./Row";
 import { Screen } from "./Screen";
 import { toJsonL } from "./toJsonL";
 
-const verticalLayout = { height: 400, width: 300 } as const;
-const horizontalLayout = { height: 300, width: 400 } as const;
+const verticalLayout = { height: 400, width: 300, tag: "vertical" } as const;
+const horizontalLayout = {
+  height: 300,
+  width: 400,
+  tag: "horizontal",
+} as const;
 
 export type Layout = typeof verticalLayout | typeof horizontalLayout;
 
@@ -31,6 +35,7 @@ const App: Component = () => {
       <main class="w-full h-full p-4 flex flex-col items-center">
         <Row>
           <select
+            value={layout().tag}
             class="select"
             onChange={(e) => {
               console.log(e.currentTarget.value);
