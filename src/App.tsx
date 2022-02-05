@@ -9,7 +9,7 @@ import { toJsonL } from "./toJsonL";
 const verticalLayout = { height: 400, width: 300 } as const;
 const horizontalLayout = { height: 300, width: 400 } as const;
 
-type Layout = typeof verticalLayout | typeof horizontalLayout;
+export type Layout = typeof verticalLayout | typeof horizontalLayout;
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
