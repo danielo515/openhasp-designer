@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { ButtonsBottom } from "./ButtonsBottom";
 import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
+import Row from "./Row";
 import { Screen } from "./Screen";
 import { toJsonL } from "./toJsonL";
 
@@ -28,20 +29,22 @@ const App: Component = () => {
   return (
     <div class="main-wrapper">
       <main class="w-full h-full p-4 flex flex-col items-center">
-        <select
-          class="select"
-          onChange={(e) => {
-            console.log(e.currentTarget.value);
-            if (e.currentTarget.value === "horizontal") {
-              setLayout(horizontalLayout);
-            } else {
-              setLayout(verticalLayout);
-            }
-          }}
-        >
-          <option value="vertical">Vertical</option>
-          <option value="horizontal">Horizontal</option>
-        </select>
+        <Row>
+          <select
+            class="select"
+            onChange={(e) => {
+              console.log(e.currentTarget.value);
+              if (e.currentTarget.value === "horizontal") {
+                setLayout(horizontalLayout);
+              } else {
+                setLayout(verticalLayout);
+              }
+            }}
+          >
+            <option value="vertical">Vertical</option>
+            <option value="horizontal">Horizontal</option>
+          </select>
+        </Row>
         <Screen {...layout()} />
         <ButtonsBottom>
           <Button label="Import" onClick={onImport} />
