@@ -3,3 +3,7 @@
     width: 100%;
     height: 100%;
 }
+
+.main-wrapper {
+    @apply bg-gray-700 h-full w-full columns-2 text-white
+}
