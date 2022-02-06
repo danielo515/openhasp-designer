@@ -25,11 +25,13 @@ interface NavigatePagesProps {
 
 export const NavigatePages: Component<NavigatePagesProps> = (p) => {
   return (
-    <div class="flex space-x-2">
+    <div class="flex space-x-4">
       <button class="btn" onClick={p.onPrev}>
         <Arrow direction="left" />
       </button>
-      {p.currentPage}
+      <div class="flex p-2 justify-center items-center">
+        <p>{p.currentPage}</p>
+      </div>
       <button class="btn" onClick={p.onNext}>
         <Arrow direction="right" />
       </button>
