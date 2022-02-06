@@ -1,9 +1,12 @@
-interface HaspButton {
+interface CommonHaspProps {
   id: number;
   x: number;
   y: number;
   w: number;
   h: number;
+  page: number;
+}
+export interface HaspButton extends CommonHaspProps {
   text: string;
   enabled: boolean;
   hidden: boolean;
@@ -15,16 +18,17 @@ interface HaspButton {
 
 export function createButton({
   id,
-  x,
-  y,
-  w,
-  h,
-  text,
+  x = 0,
+  y = 0,
+  w = 100,
+  h = 100,
+  text = "Button",
   enabled,
   hidden,
   toggle,
   align,
   mode,
+  page,
 }: Partial<HaspButton>): HaspButton {
   return {
     id,
@@ -39,5 +43,6 @@ export function createButton({
     obj: "btn",
     align,
     mode,
+    page,
   };
 }
