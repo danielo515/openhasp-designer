@@ -1,10 +1,12 @@
 import { Component, createSignal } from "solid-js";
 import { Button } from "./Button";
-import { ButtonsBottom } from "./ButtonsBottom";
+import { ButtonsBottom } from "./components/ButtonsBottom";
+import { NavigatePages } from "./components/NavigatePages";
 import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
 import Row from "./Row";
 import { Screen } from "./Screen";
+import Store from "./store";
 import { toJsonL } from "./toJsonL";
 
 const verticalLayout = { height: 400, width: 300, tag: "vertical" } as const;
@@ -15,6 +17,8 @@ const horizontalLayout = {
 } as const;
 
 export type Layout = typeof verticalLayout | typeof horizontalLayout;
+
+const { store, nextPage, prevPage } = Store;
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -49,6 +53,11 @@ const App: Component = () => {
             <option value="vertical">Vertical</option>
             <option value="horizontal">Horizontal</option>
           </select>
+          <NavigatePages
+            currentPage={store.currentPage}
+            onNext={nextPage}
+            onPrev={prevPage}
+          />
         </Row>
         <Screen {...layout()} />
         <ButtonsBottom>
