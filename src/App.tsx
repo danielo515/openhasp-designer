@@ -18,7 +18,7 @@ const horizontalLayout = {
 
 export type Layout = typeof verticalLayout | typeof horizontalLayout;
 
-const { store, nextPage, prevPage } = Store;
+const { store, nextPage, prevPage, addElement, compile } = Store;
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -62,7 +62,7 @@ const App: Component = () => {
         <Screen {...layout()} />
         <ButtonsBottom>
           <Button label="Import" onClick={onImport} />
-          <Button label="Export" onClick={onExport} />
+          <Button label="Export" onClick={compile} />
         </ButtonsBottom>
         <textarea
           class="textarea w-full"
@@ -70,7 +70,7 @@ const App: Component = () => {
             console.log(e.currentTarget.value);
             setJsonL(e.currentTarget.value);
           }}
-          value={jsonL()}
+          value={store.jsonL}
         />
       </main>
       <div class="w-full h-full border-l-2 border-cyan-700 ">
@@ -78,10 +78,7 @@ const App: Component = () => {
           <Button
             label="Button"
             onClick={() => {
-              setElements((elements) => [
-                ...elements,
-                createButton({ id: elements.length, text: "Button" }),
-              ]);
+              addElement(createButton({ text: "Button" }));
             }}
           />
         </div>
