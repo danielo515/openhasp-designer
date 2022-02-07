@@ -14,6 +14,14 @@ const initialState = {
   layout: "horizontal" as HaspScreenOrientation,
   jsonL: "",
   selectedElement: { id: 0, page: 1 } as SelectedElement,
+  get currentElement() {
+    const idx = store.pages.findIndex(
+      ({ id, page }) =>
+        id === store.selectedElement.id && page === this.selectedElement.page
+    );
+    const element = store.pages[idx];
+    return element ? { ...element, index: idx } : null;
+  },
   get currentPageElements() {
     return store.pages.filter(
       (element) => element.page === this.currentPage || element.page === 0

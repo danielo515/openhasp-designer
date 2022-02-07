@@ -20,6 +20,15 @@ html {
 }
 
 .export-area {
-  @apply textarea w-full flex-1 resize-none;
+  @apply textarea w-full flex-1 resize-none font-mono p-1;
   line-height: 1rem;
+}
+
+.divider {
+  @apply my-2;
+}
+
+.divider::after,
+.divider::before {
+  @apply bg-gray-700;
 }

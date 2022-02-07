@@ -17,6 +17,7 @@ import {
   importJsonL,
   selectHaspElement,
 } from "./store";
+import { PropEditor } from "./PropEditor";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -72,7 +73,7 @@ const App: Component = () => {
         />
       </main>
       <div class="w-full h-full border-l-2 border-cyan-700 ">
-        <div class="h-1/2 p-4">
+        <div class="h-1/3 p-4">
           <Button
             label="Button"
             onClick={() => {
@@ -80,8 +81,8 @@ const App: Component = () => {
             }}
           />
         </div>
-        <div class="h-1/2 p-4 border-cyan-700 border-t-2 bg-gray-600 shadow-inner">
-          bottom
+        <div class="h-2/3 p-4 border-cyan-700 border-t-2 bg-gray-600 shadow-inner">
+          <PropEditor />
         </div>
       </div>
     </div>
