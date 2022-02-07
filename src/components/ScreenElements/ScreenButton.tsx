@@ -10,6 +10,8 @@ interface ScreenButtonProps {
   radius: number;
   page: number;
   id: number;
+  border_width: number;
+  border_color: string;
   onClick: () => void;
 }
 
@@ -20,6 +22,7 @@ export const ScreenButton: Component<ScreenButtonProps> = (p) => {
     width: ${p.w}px; 
     height: ${p.h}px;
     border-radius: ${p.radius}px;
+    border-width: ${p.border_width}px;
     `;
   const isSelected = () => {
     return (

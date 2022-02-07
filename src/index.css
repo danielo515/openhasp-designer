@@ -14,7 +14,6 @@ html {
   @apply bg-gray-700 h-full w-full columns-2 text-white;
 }
 .hasp-button {
-  border: 1px solid var(--button-border-color);
   align-items: center;
   @apply absolute flex justify-center p-2;
 }

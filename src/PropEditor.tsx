@@ -13,12 +13,13 @@ const Textinput = (p) => {
 };
 
 const BaseComponents = [
+  { label: "Text", component: Textinput, prop: "text" },
   { label: "Position x", component: NumberInput, prop: "x" },
   { label: "Position y", component: NumberInput, prop: "y" },
   { label: "Height", component: NumberInput, prop: "h" },
   { label: "Width", component: NumberInput, prop: "w" },
   { label: "Radius", component: NumberInput, prop: "radius" },
-  { label: "Text", component: Textinput, prop: "text" },
+  { label: "Border width", component: NumberInput, prop: "border_width" },
 ] as const;
 
 export const PropEditor: Component<PropEditorProps> = (p) => {

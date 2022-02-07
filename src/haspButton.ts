@@ -11,6 +11,8 @@ interface CommonHaspProps {
   page: number;
   /** border radius  */
   radius: number;
+  border_width: number;
+  border_color: string;
 }
 export interface HaspButton extends CommonHaspProps {
   text: string;
@@ -36,6 +38,8 @@ export function createButton({
   align,
   mode,
   page,
+  border_width = 1,
+  border_color,
 }: Partial<HaspButton>): HaspButton {
   return {
     id,
@@ -52,5 +56,7 @@ export function createButton({
     align,
     mode,
     radius,
+    border_width,
+    border_color,
   };
 }
