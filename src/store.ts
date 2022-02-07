@@ -1,6 +1,7 @@
 import { createStore } from "solid-js/store";
 import { DEFAULT_HEIGHT, DEFAULT_PADDING, DEFAULT_WIDTH } from "./constants";
 import { HaspButton } from "./haspButton";
+import { parseJsonL } from "./parseJsonL";
 import { getScreenDimensions, HaspScreenOrientation, Layout } from "./Screen";
 import { toJsonL } from "./toJsonL";
 
@@ -74,6 +75,11 @@ const addElement = (element: PageElement) => {
       },
     ];
   });
+};
+
+export const importJsonL = (jsonL: string) => {
+  const elements = parseJsonL<PageElement>(jsonL);
+  setStore("pages", elements);
 };
 
 export const selectHaspElement = ({ page, id }: SelectedElement) => {

@@ -7,18 +7,12 @@ import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
 import Row from "./components/Row";
 import { getScreenDimensions, Screen } from "./Screen";
-import Store, { selectHaspElement } from "./store";
+import Store, { importJsonL, selectHaspElement } from "./store";
 
 const { store, nextPage, prevPage, addElement, compile, setLayout } = Store;
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
-  const [elements, setElements] = createSignal([]);
-  const onImport = () => {
-    const elements = parseJsonL(jsonL());
-    console.log({ elements });
-    setElements(elements);
-  };
   const layout = () => getScreenDimensions(store.layout);
   return (
     <div class="main-wrapper">
@@ -58,7 +52,7 @@ const App: Component = () => {
           </For>
         </Screen>
         <ButtonsBottom>
-          <Button label="Import" onClick={onImport} />
+          <Button label="Import" onClick={() => importJsonL(jsonL())} />
           <Button label="Export" onClick={compile} />
         </ButtonsBottom>
         <textarea
