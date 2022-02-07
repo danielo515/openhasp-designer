@@ -1,14 +1,13 @@
 import { Component, createSignal, For } from "solid-js";
-import { Button } from "./Button";
+import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { NavigatePages } from "./components/NavigatePages";
 import { ScreenButton } from "./components/ScreenElements/ScreenButton";
 import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
-import Row from "./Row";
+import Row from "./components/Row";
 import { getScreenDimensions, Screen } from "./Screen";
 import Store, { selectHaspElement } from "./store";
-import { toJsonL } from "./toJsonL";
 
 const { store, nextPage, prevPage, addElement, compile, setLayout } = Store;
 
