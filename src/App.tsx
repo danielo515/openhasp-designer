@@ -7,9 +7,16 @@ import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
 import Row from "./components/Row";
 import { getScreenDimensions, Screen } from "./Screen";
-import Store, { importJsonL, selectHaspElement } from "./store";
-
-const { store, nextPage, prevPage, addElement, compile, setLayout } = Store;
+import {
+  store,
+  nextPage,
+  prevPage,
+  addElement,
+  compile,
+  setLayout,
+  importJsonL,
+  selectHaspElement,
+} from "./store";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");

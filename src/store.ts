@@ -21,7 +21,7 @@ const initialState = {
   },
 };
 
-const [store, setStore] = createStore(initialState);
+export const [store, setStore] = createStore(initialState);
 
 const getNextId = (page: number, elements: ReadonlyArray<PageElement>) => {
   const currentPageIds = elements
@@ -31,15 +31,15 @@ const getNextId = (page: number, elements: ReadonlyArray<PageElement>) => {
   return Math.max(...currentPageIds) + 1;
 };
 
-const setLayout = (layout: HaspScreenOrientation) => {
+export const setLayout = (layout: HaspScreenOrientation) => {
   setStore("layout", layout);
 };
 
-const nextPage = () => {
+export const nextPage = () => {
   setStore("currentPage", (current) => current + 1);
 };
 
-const prevPage = () => {
+export const prevPage = () => {
   setStore("currentPage", (current) => Math.max(current - 1, 1));
 };
 
@@ -57,7 +57,7 @@ const getDefaultY = (position: number, columns: number) => {
   return y;
 };
 
-const addElement = (element: PageElement) => {
+export const addElement = (element: PageElement) => {
   setStore("pages", (pages) => {
     const id = getNextId(store.currentPage, pages);
     const layout = getScreenDimensions(store.layout);
@@ -86,17 +86,7 @@ export const selectHaspElement = ({ page, id }: SelectedElement) => {
   setStore("selectedElement", { page, id });
 };
 
-const compile = () => {
+export const compile = () => {
   const output = toJsonL(store.pages);
   setStore("jsonL", output);
-};
-
-export default {
-  store,
-  nextPage,
-  prevPage,
-  addElement,
-  compile,
-  setLayout,
-  selectHaspElement,
 };

@@ -1,23 +1,25 @@
-
-#root, body, html {
-    width: 100%;
-    height: 100%;
+#root,
+body,
+html {
+  width: 100%;
+  height: 100%;
 }
 
 :root {
---button-border-color: rgb(70, 159, 175);
-  }
+  --button-border-color: rgb(70, 159, 175);
+  --divider-color: rgb(14 116 144 / var(--tw-border-opacity));
+}
 
 .main-wrapper {
-    @apply bg-gray-700 h-full w-full columns-2 text-white
+  @apply bg-gray-700 h-full w-full columns-2 text-white;
 }
 .hasp-button {
-    border: 1px solid var(--button-border-color);
-    align-items: center;
-    @apply absolute flex justify-center p-2;
+  border: 1px solid var(--button-border-color);
+  align-items: center;
+  @apply absolute flex justify-center p-2;
 }
 
 .export-area {
-    @apply textarea w-full flex-1 resize-none;
-    line-height: 1rem;
+  @apply textarea w-full flex-1 resize-none;
+  line-height: 1rem;
 }

@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import Store from "../../store";
+import { store } from "../../store";
 
 interface ScreenButtonProps {
   x: number;
@@ -14,7 +14,6 @@ interface ScreenButtonProps {
 }
 
 export const ScreenButton: Component<ScreenButtonProps> = (p) => {
-  const { store } = Store;
   const styles = () => `
     top: ${p.y}px; 
     left: ${p.x}px; 
