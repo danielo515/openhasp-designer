@@ -7,7 +7,7 @@ import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
 import Row from "./Row";
 import { getScreenDimensions, Screen } from "./Screen";
-import Store from "./store";
+import Store, { selectHaspElement } from "./store";
 import { toJsonL } from "./toJsonL";
 
 const { store, nextPage, prevPage, addElement, compile, setLayout } = Store;
@@ -48,7 +48,14 @@ const App: Component = () => {
         </Row>
         <Screen {...layout()}>
           <For each={store.currentPageElements}>
-            {(element) => <ScreenButton {...element} />}
+            {(element) => (
+              <ScreenButton
+                {...element}
+                onClick={() =>
+                  selectHaspElement({ id: element.id, page: element.page })
+                }
+              />
+            )}
           </For>
         </Screen>
         <ButtonsBottom>

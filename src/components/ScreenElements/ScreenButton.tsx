@@ -1,4 +1,5 @@
 import { Component } from "solid-js";
+import Store from "../../store";
 
 interface ScreenButtonProps {
   x: number;
@@ -7,9 +8,13 @@ interface ScreenButtonProps {
   h: number;
   text: string;
   radius: number;
+  page: number;
+  id: number;
+  onClick: () => void;
 }
 
 export const ScreenButton: Component<ScreenButtonProps> = (p) => {
+  const { store } = Store;
   const styles = () => `
     top: ${p.y}px; 
     left: ${p.x}px; 
@@ -17,9 +22,19 @@ export const ScreenButton: Component<ScreenButtonProps> = (p) => {
     height: ${p.h}px;
     border-radius: ${p.radius}px;
     `;
+  const isSelected = () => {
+    return (
+      store.selectedElement.id === p.id && store.selectedElement.page === p.page
+    );
+  };
   return (
-    <div class="hasp-button" style={styles()}>
+    <button
+      class="hasp-button"
+      classList={{ "outline-solid-yellow-500": isSelected() }}
+      style={styles()}
+      onClick={p.onClick}
+    >
       {p.text}
-    </div>
+    </button>
   );
 };

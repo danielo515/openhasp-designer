@@ -5,12 +5,14 @@ import { getScreenDimensions, HaspScreenOrientation, Layout } from "./Screen";
 import { toJsonL } from "./toJsonL";
 
 type PageElement = HaspButton;
+type SelectedElement = { page: number; id: number };
 
 const initialState = {
   currentPage: 1,
   pages: [] as PageElement[],
   layout: "horizontal" as HaspScreenOrientation,
   jsonL: "",
+  selectedElement: { id: 0, page: 1 } as SelectedElement,
   get currentPageElements() {
     return store.pages.filter(
       (element) => element.page === this.currentPage || element.page === 0
@@ -74,6 +76,10 @@ const addElement = (element: PageElement) => {
   });
 };
 
+export const selectHaspElement = ({ page, id }: SelectedElement) => {
+  setStore("selectedElement", { page, id });
+};
+
 const compile = () => {
   const output = toJsonL(store.pages);
   setStore("jsonL", output);
@@ -86,4 +92,5 @@ export default {
   addElement,
   compile,
   setLayout,
+  selectHaspElement,
 };
