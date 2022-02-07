@@ -9,7 +9,7 @@ const initialState = {
   layout: "horizontal",
   jsonL: "",
   get currentPageElements() {
-    return this.pages.filter(
+    return store.pages.filter(
       (element) => element.page === this.currentPage || element.page === 0
     );
   },
@@ -17,8 +17,8 @@ const initialState = {
 
 const [store, setStore] = createStore(initialState);
 
-const getNextId = (page: number) => {
-  const currentPageIds = store.pages
+const getNextId = (page: number, elements: PageElement[]) => {
+  const currentPageIds = elements
     .filter((element) => element.page === page)
     .map((element) => element.id)
     .concat(0);
@@ -33,11 +33,21 @@ const prevPage = () => {
   setStore("currentPage", (current) => Math.max(current - 1, 1));
 };
 
+const defaultWidth = 100;
+
 const addElement = (element) => {
-  setStore("pages", (pages) => [
-    ...pages,
-    { ...element, id: getNextId(store.currentPage), page: store.currentPage },
-  ]);
+  setStore("pages", (pages) => {
+    const id = getNextId(store.currentPage, pages);
+    return [
+      ...pages,
+      {
+        ...element,
+        x: element.x ?? defaultWidth * (id - 1),
+        id,
+        page: store.currentPage,
+      },
+    ];
+  });
 };
 
 const compile = () => {
