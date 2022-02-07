@@ -6,35 +6,21 @@ import { ScreenButton } from "./components/ScreenElements/ScreenButton";
 import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
 import Row from "./Row";
-import { Screen } from "./Screen";
+import { getScreenDimensions, Screen } from "./Screen";
 import Store from "./store";
 import { toJsonL } from "./toJsonL";
 
-const verticalLayout = { height: 400, width: 300, tag: "vertical" } as const;
-const horizontalLayout = {
-  height: 300,
-  width: 400,
-  tag: "horizontal",
-} as const;
-
-export type Layout = typeof verticalLayout | typeof horizontalLayout;
-
-const { store, nextPage, prevPage, addElement, compile } = Store;
+const { store, nextPage, prevPage, addElement, compile, setLayout } = Store;
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
   const [elements, setElements] = createSignal([]);
-  const [layout, setLayout] = createSignal<Layout>(horizontalLayout);
-
   const onImport = () => {
     const elements = parseJsonL(jsonL());
     console.log({ elements });
     setElements(elements);
   };
-  const onExport = () => {
-    const exportStr = toJsonL(elements());
-    setJsonL(exportStr);
-  };
+  const layout = () => getScreenDimensions(store.layout);
   return (
     <div class="main-wrapper">
       <main class="w-full h-full p-4 flex flex-col items-center">
@@ -45,9 +31,9 @@ const App: Component = () => {
             onChange={(e) => {
               console.log(e.currentTarget.value);
               if (e.currentTarget.value === "horizontal") {
-                setLayout(horizontalLayout);
+                setLayout("horizontal");
               } else {
-                setLayout(verticalLayout);
+                setLayout("vertical");
               }
             }}
           >
