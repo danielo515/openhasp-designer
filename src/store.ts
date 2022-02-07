@@ -1,12 +1,14 @@
 import { createStore } from "solid-js/store";
+import { DEFAULT_HEIGHT, DEFAULT_PADDING, DEFAULT_WIDTH } from "./constants";
 import { HaspButton } from "./haspButton";
+import { getScreenDimensions, HaspScreenOrientation, Layout } from "./Screen";
 
 type PageElement = HaspButton;
 
 const initialState = {
   currentPage: 1,
   pages: [] as PageElement[],
-  layout: "horizontal",
+  layout: "horizontal" as HaspScreenOrientation,
   jsonL: "",
   get currentPageElements() {
     return store.pages.filter(
@@ -17,12 +19,16 @@ const initialState = {
 
 const [store, setStore] = createStore(initialState);
 
-const getNextId = (page: number, elements: PageElement[]) => {
+const getNextId = (page: number, elements: ReadonlyArray<PageElement>) => {
   const currentPageIds = elements
     .filter((element) => element.page === page)
     .map((element) => element.id)
     .concat(0);
   return Math.max(...currentPageIds) + 1;
+};
+
+const setLayout = (layout: HaspScreenOrientation) => {
+  setStore("layout", layout);
 };
 
 const nextPage = () => {
@@ -33,16 +39,29 @@ const prevPage = () => {
   setStore("currentPage", (current) => Math.max(current - 1, 1));
 };
 
-const defaultWidth = 100;
+const getDefaultX = (position: number, { width }: Layout) => {
+  const padding = DEFAULT_PADDING + position;
+  const x = DEFAULT_WIDTH * position + padding;
+  if (x > width) return 0 + DEFAULT_PADDING;
+  return x;
+};
 
-const addElement = (element) => {
+const getDefaultY = (position: number, { height }: Layout) => {
+  return DEFAULT_HEIGHT * position + DEFAULT_PADDING;
+};
+
+const addElement = (element: PageElement) => {
   setStore("pages", (pages) => {
     const id = getNextId(store.currentPage, pages);
+    const layout = getScreenDimensions(store.layout);
+    const x = element.x ?? getDefaultX(id - 1, layout);
+    const y = element.y ?? getDefaultY(id - 1, layout);
     return [
       ...pages,
       {
         ...element,
-        x: element.x ?? defaultWidth * (id - 1),
+        x,
+        y,
         id,
         page: store.currentPage,
       },
@@ -61,4 +80,5 @@ export default {
   prevPage,
   addElement,
   compile,
+  setLayout,
 };
