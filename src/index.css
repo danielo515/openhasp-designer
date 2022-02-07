@@ -16,3 +16,8 @@
     align-items: center;
     @apply absolute flex justify-center p-2;
 }
+
+.export-area {
+    @apply textarea w-full flex-1 resize-none;
+    line-height: 1rem;
+}

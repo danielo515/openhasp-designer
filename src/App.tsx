@@ -56,7 +56,7 @@ const App: Component = () => {
           <Button label="Export" onClick={compile} />
         </ButtonsBottom>
         <textarea
-          class="textarea w-full"
+          class="export-area"
           onChange={(e) => {
             console.log(e.currentTarget.value);
             setJsonL(e.currentTarget.value);
