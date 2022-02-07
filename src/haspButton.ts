@@ -18,7 +18,7 @@ export interface HaspButton extends CommonHaspProps {
 
 export function createButton({
   id,
-  x = 0,
+  x,
   y = 0,
   w = 100,
   h = 100,

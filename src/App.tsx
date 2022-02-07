@@ -1,7 +1,8 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 import { Button } from "./Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { NavigatePages } from "./components/NavigatePages";
+import { ScreenButton } from "./components/ScreenElements/ScreenButton";
 import { createButton } from "./haspButton";
 import { parseJsonL } from "./parseJsonL";
 import Row from "./Row";
@@ -59,7 +60,11 @@ const App: Component = () => {
             onPrev={prevPage}
           />
         </Row>
-        <Screen {...layout()} />
+        <Screen {...layout()}>
+          <For each={store.currentPageElements}>
+            {(element) => <ScreenButton {...element} />}
+          </For>
+        </Screen>
         <ButtonsBottom>
           <Button label="Import" onClick={onImport} />
           <Button label="Export" onClick={compile} />
