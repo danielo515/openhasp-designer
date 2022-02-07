@@ -2,6 +2,7 @@ import { createStore } from "solid-js/store";
 import { DEFAULT_HEIGHT, DEFAULT_PADDING, DEFAULT_WIDTH } from "./constants";
 import { HaspButton } from "./haspButton";
 import { getScreenDimensions, HaspScreenOrientation, Layout } from "./Screen";
+import { toJsonL } from "./toJsonL";
 
 type PageElement = HaspButton;
 
@@ -39,23 +40,27 @@ const prevPage = () => {
   setStore("currentPage", (current) => Math.max(current - 1, 1));
 };
 
-const getDefaultX = (position: number, { width }: Layout) => {
-  const padding = DEFAULT_PADDING + position;
-  const x = DEFAULT_WIDTH * position + padding;
-  if (x > width) return 0 + DEFAULT_PADDING;
+const getDefaultX = (position: number, columns: number) => {
+  const column = Math.round(position % columns);
+  const padding = DEFAULT_PADDING + column;
+  const x = DEFAULT_WIDTH * column + padding;
   return x;
 };
 
-const getDefaultY = (position: number, { height }: Layout) => {
-  return DEFAULT_HEIGHT * position + DEFAULT_PADDING;
+const getDefaultY = (position: number, columns: number) => {
+  const row = Math.floor(position / columns);
+  const padding = DEFAULT_PADDING + row;
+  const y = DEFAULT_HEIGHT * row + padding;
+  return y;
 };
 
 const addElement = (element: PageElement) => {
   setStore("pages", (pages) => {
     const id = getNextId(store.currentPage, pages);
     const layout = getScreenDimensions(store.layout);
-    const x = element.x ?? getDefaultX(id - 1, layout);
-    const y = element.y ?? getDefaultY(id - 1, layout);
+    const columns = Math.round(layout.width / DEFAULT_WIDTH);
+    const x = element.x ?? getDefaultX(id - 1, columns);
+    const y = element.y ?? getDefaultY(id - 1, columns);
     return [
       ...pages,
       {
@@ -70,8 +75,8 @@ const addElement = (element: PageElement) => {
 };
 
 const compile = () => {
-  const output = store.pages.map((element) => JSON.stringify(element));
-  setStore("jsonL", output.join("\n"));
+  const output = toJsonL(store.pages);
+  setStore("jsonL", output);
 };
 
 export default {

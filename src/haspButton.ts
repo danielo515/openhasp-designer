@@ -25,7 +25,7 @@ export interface HaspButton extends CommonHaspProps {
 export function createButton({
   id,
   x,
-  y = 0,
+  y,
   w = DEFAULT_WIDTH,
   h = DEFAULT_HEIGHT,
   radius = 5,
