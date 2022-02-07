@@ -23,6 +23,7 @@ export const ScreenButton: Component<ScreenButtonProps> = (p) => {
     height: ${p.h}px;
     border-radius: ${p.radius}px;
     border-width: ${p.border_width}px;
+    border-color: ${p.border_color};
     `;
   const isSelected = () => {
     return (

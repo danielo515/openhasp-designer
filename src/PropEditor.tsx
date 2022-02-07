@@ -8,18 +8,23 @@ interface PropEditorProps {
 const NumberInput = (p) => {
   return <input class="input input-sm" type="number" {...p} />;
 };
-const Textinput = (p) => {
+const TextInput = (p) => {
   return <input class="input input-sm" type="text" {...p} />;
 };
 
+const ColorInput = (p) => {
+  return <input class="input input-sm" type="color" {...p} />;
+};
+
 const BaseComponents = [
-  { label: "Text", component: Textinput, prop: "text" },
+  { label: "Text", component: TextInput, prop: "text" },
   { label: "Position x", component: NumberInput, prop: "x" },
   { label: "Position y", component: NumberInput, prop: "y" },
   { label: "Height", component: NumberInput, prop: "h" },
   { label: "Width", component: NumberInput, prop: "w" },
   { label: "Radius", component: NumberInput, prop: "radius" },
   { label: "Border width", component: NumberInput, prop: "border_width" },
+  { label: "Border color", component: ColorInput, prop: "border_color" },
 ] as const;
 
 export const PropEditor: Component<PropEditorProps> = (p) => {
