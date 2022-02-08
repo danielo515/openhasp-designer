@@ -1,4 +1,13 @@
-# 0.1.0 (2022-02-08)
+# [0.2.0](https://github.com/danielo515/openhasp-designer/compare/v0.1.0...v0.2.0) (2022-02-08)
+
+
+### Features
+
+* added icons font ([268fd19](https://github.com/danielo515/openhasp-designer/commit/268fd19e2a092f1928794a68fb83d986b4e38fce))
+
+
+
+# [0.1.0](https://github.com/danielo515/openhasp-designer/compare/d6535585bfe5c4ffa4e8102ebb331fcb85a9ceeb...v0.1.0) (2022-02-08)
 
 
 ### Bug Fixes
