@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/danielo515/openhasp-designer/compare/v0.2.0...v0.3.0) (2022-02-08)
+
+
+### Features
+
+* icons support ([7ff71f8](https://github.com/danielo515/openhasp-designer/commit/7ff71f852468206921a3f7f87df6b82b1cdce333))
+
+
+
 # [0.2.0](https://github.com/danielo515/openhasp-designer/compare/v0.1.0...v0.2.0) (2022-02-08)
 
 
