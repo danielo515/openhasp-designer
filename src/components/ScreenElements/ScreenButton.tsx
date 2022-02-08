@@ -26,9 +26,7 @@ export const ScreenButton: Component<ScreenButtonProps> = (p) => {
     border-color: ${p.border_color};
     `;
   const isSelected = () => {
-    return (
-      store.selectedElement.id === p.id && store.selectedElement.page === p.page
-    );
+    return store.selectedElement.id === p.id && store.selectedElement.page === p.page;
   };
   return (
     <button
