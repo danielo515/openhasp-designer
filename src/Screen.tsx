@@ -1,9 +1,9 @@
 import { ComponentProps } from "solid-js";
 
-const verticalLayout = { height: 400, width: 300, tag: "vertical" } as const;
+const verticalLayout = { height: 480, width: 320, tag: "vertical" } as const;
 const horizontalLayout = {
-  height: 300,
-  width: 400,
+  height: 320,
+  width: 480,
   tag: "horizontal",
 } as const;
 
