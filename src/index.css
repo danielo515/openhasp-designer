@@ -17,8 +17,7 @@ html {
 }
 .hasp-button {
   align-items: center;
-  font-family: material-icons;
-  @apply absolute flex justify-center p-2 font-material-icons;
+  @apply absolute flex justify-center p-2;
 }
 
 .export-area {
