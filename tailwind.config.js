@@ -3,7 +3,11 @@ const { transform } = require("windicss/helpers");
 module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "material-icons": ["Material Icons", "sans-serif"],
+      },
+    },
   },
   plugins: [transform("daisyui")],
 };
