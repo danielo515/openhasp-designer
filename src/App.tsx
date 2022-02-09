@@ -3,15 +3,13 @@ import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { NavigatePages } from "./components/NavigatePages";
 import { ScreenButton } from "./components/ScreenElements/ScreenButton";
-import { createButton } from "./haspButton";
-import { parseJsonL } from "./parseJsonL";
 import Row from "./components/Row";
 import { getScreenDimensions, Screen } from "./Screen";
 import {
   store,
   nextPage,
   prevPage,
-  addElement,
+  createElement,
   compile,
   setLayout,
   importJsonL,
@@ -41,20 +39,14 @@ const App: Component = () => {
             <option value="vertical">Vertical</option>
             <option value="horizontal">Horizontal</option>
           </select>
-          <NavigatePages
-            currentPage={store.currentPage}
-            onNext={nextPage}
-            onPrev={prevPage}
-          />
+          <NavigatePages currentPage={store.currentPage} onNext={nextPage} onPrev={prevPage} />
         </Row>
         <Screen {...layout()}>
           <For each={store.currentPageElements}>
             {(element) => (
               <ScreenButton
                 {...element}
-                onClick={() =>
-                  selectHaspElement({ id: element.id, page: element.page })
-                }
+                onClick={() => selectHaspElement({ id: element.id, page: element.page })}
               />
             )}
           </For>
@@ -73,11 +65,17 @@ const App: Component = () => {
         />
       </main>
       <div class="w-full h-full border-l-2 border-cyan-700 ">
-        <div class="h-1/3 p-4">
+        <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
           <Button
             label="Button"
             onClick={() => {
-              addElement(createButton({ text: "Button" }));
+              createElement({ text: "Button", obj: "btn" });
+            }}
+          />
+          <Button
+            label="Label"
+            onClick={() => {
+              createElement({ text: "Label", obj: "label" });
             }}
           />
         </div>
