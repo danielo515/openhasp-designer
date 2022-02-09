@@ -1,11 +1,11 @@
 import { createStore } from "solid-js/store";
 import { DEFAULT_HEIGHT, DEFAULT_PADDING, DEFAULT_WIDTH } from "./constants";
-import { HaspButton } from "./haspButton";
+import { createButton, createHaspLabel, HaspButton, HaspLabel } from "./openHasp";
 import { parseJsonL } from "./parseJsonL";
 import { getScreenDimensions, HaspScreenOrientation, Layout } from "./Screen";
 import { toJsonL } from "./toJsonL";
 
-type PageElement = HaspButton;
+type PageElement = HaspButton | HaspLabel;
 type SelectedElement = { page: number; id: number };
 
 const initialState = {
@@ -16,16 +16,13 @@ const initialState = {
   selectedElement: { id: 0, page: 1 } as SelectedElement,
   get currentElement() {
     const idx = store.pages.findIndex(
-      ({ id, page }) =>
-        id === store.selectedElement.id && page === this.selectedElement.page
+      ({ id, page }) => id === store.selectedElement.id && page === this.selectedElement.page
     );
     const element = store.pages[idx];
     return element ? { ...element, index: idx } : null;
   },
   get currentPageElements() {
-    return store.pages.filter(
-      (element) => element.page === this.currentPage || element.page === 0
-    );
+    return store.pages.filter((element) => element.page === this.currentPage || element.page === 0);
   },
 };
 
@@ -65,23 +62,41 @@ const getDefaultY = (position: number, columns: number) => {
   return y;
 };
 
-export const addElement = (element: PageElement) => {
+type CreateArgs = { obj: "btn"; text: string } | { obj: "label"; text: string };
+
+export const createElement = (element: CreateArgs) => {
   setStore("pages", (pages) => {
     const id = getNextId(store.currentPage, pages);
     const layout = getScreenDimensions(store.layout);
     const columns = Math.round(layout.width / DEFAULT_WIDTH);
-    const x = element.x ?? getDefaultX(id - 1, columns);
-    const y = element.y ?? getDefaultY(id - 1, columns);
-    return [
-      ...pages,
-      {
-        ...element,
-        x,
-        y,
-        id,
-        page: store.currentPage,
-      },
-    ];
+    const x = getDefaultX(id - 1, columns);
+    const y = getDefaultY(id - 1, columns);
+    const page = store.currentPage;
+    switch (element.obj) {
+      case "label": {
+        return [...pages, createHaspLabel({ id, page, x, y, ...element })];
+      }
+      case "btn": {
+        const text = element.text;
+        return [
+          ...pages,
+          createButton({
+            id,
+            x,
+            y,
+            text,
+            page,
+            enabled: true,
+            toggle: false,
+            hidden: false,
+            align: "center",
+            mode: "expand",
+            w: DEFAULT_WIDTH,
+            h: DEFAULT_HEIGHT,
+          }),
+        ];
+      }
+    }
   });
 };
 
