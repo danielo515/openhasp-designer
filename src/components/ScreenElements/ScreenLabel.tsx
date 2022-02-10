@@ -2,7 +2,7 @@ import { Component, For } from "solid-js";
 import { store } from "../../store";
 import { parseIcons } from "./parseIcons";
 
-interface ScreenButtonProps {
+interface ScreenLabelProps {
   x: number;
   y: number;
   w: number;
@@ -11,20 +11,20 @@ interface ScreenButtonProps {
   radius: number;
   page: number;
   id: number;
-  border_width?: number;
-  border_color?: string;
+  border_width: number;
+  border_color: string;
   onClick: () => void;
 }
 
-export const ScreenButton: Component<ScreenButtonProps> = (p) => {
+export const ScreenLabel: Component<ScreenLabelProps> = (p) => {
   const styles = () => `
     top: ${p.y}px; 
     left: ${p.x}px; 
     width: ${p.w}px; 
     height: ${p.h}px;
     border-radius: ${p.radius}px;
-    border-width: ${p.border_width ?? 1}px;
-    border-color: ${p.border_color || "#FFF"};
+    border-width: ${p.border_width}px;
+    border-color: ${p.border_color};
     `;
   const isSelected = () => {
     return store.selectedElement.id === p.id && store.selectedElement.page === p.page;

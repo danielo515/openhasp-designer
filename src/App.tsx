@@ -1,10 +1,11 @@
+import { CreateControls } from "./CreateControls";
 import { Component, createSignal, For } from "solid-js";
 import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { NavigatePages } from "./components/NavigatePages";
 import { ScreenButton } from "./components/ScreenElements/ScreenButton";
 import Row from "./components/Row";
-import { getScreenDimensions, Screen } from "./Screen";
+import { getScreenDimensions, Screen } from "./components/Screen";
 import {
   store,
   nextPage,
@@ -16,6 +17,7 @@ import {
   selectHaspElement,
 } from "./store";
 import { PropEditor } from "./PropEditor";
+import { ScreenLabel } from "./components/ScreenElements/ScreenLabel";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -43,17 +45,20 @@ const App: Component = () => {
         </Row>
         <Screen {...layout()}>
           <For each={store.currentPageElements}>
-            {(element) => (
-              <ScreenButton
-                {...element}
-                onClick={() => selectHaspElement({ id: element.id, page: element.page })}
-              />
-            )}
+            {(element) => {
+              const onClick = () => selectHaspElement({ id: element.id, page: element.page });
+              switch (element.obj) {
+                case "btn":
+                  return <ScreenButton {...element} onClick={onClick} />;
+                case "label":
+                  return <ScreenLabel {...element} onClick={onClick} />;
+              }
+            }}
           </For>
         </Screen>
         <ButtonsBottom>
-          <Button label="Import" onClick={() => importJsonL(jsonL())} />
-          <Button label="Export" onClick={compile} />
+          <Button label="Import" variant="primary" onClick={() => importJsonL(jsonL())} />
+          <Button label="Export" variant="primary" onClick={compile} />
         </ButtonsBottom>
         <textarea
           class="export-area"
@@ -66,18 +71,7 @@ const App: Component = () => {
       </main>
       <div class="w-full h-full border-l-2 border-cyan-700 ">
         <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
-          <Button
-            label="Button"
-            onClick={() => {
-              createElement({ text: "Button", obj: "btn" });
-            }}
-          />
-          <Button
-            label="Label"
-            onClick={() => {
-              createElement({ text: "Label", obj: "label" });
-            }}
-          />
+          <CreateControls createElement={createElement} />
         </div>
         <div class="h-2/3 p-4 border-cyan-700 border-t-2 bg-gray-600 shadow-inner">
           <PropEditor />

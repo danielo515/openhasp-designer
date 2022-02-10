@@ -2,7 +2,7 @@ import { createStore } from "solid-js/store";
 import { DEFAULT_HEIGHT, DEFAULT_PADDING, DEFAULT_WIDTH } from "./constants";
 import { createButton, createHaspLabel, HaspButton, HaspLabel } from "./openHasp";
 import { parseJsonL } from "./parseJsonL";
-import { getScreenDimensions, HaspScreenOrientation, Layout } from "./Screen";
+import { getScreenDimensions, HaspScreenOrientation, Layout } from "./components/Screen";
 import { toJsonL } from "./toJsonL";
 
 type PageElement = HaspButton | HaspLabel;
