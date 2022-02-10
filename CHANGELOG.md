@@ -1,3 +1,13 @@
+# [0.4.0](https://github.com/danielo515/openhasp-designer/compare/v0.3.0...v0.4.0) (2022-02-10)
+
+
+### Features
+
+* add label types ([99b4319](https://github.com/danielo515/openhasp-designer/commit/99b4319d0db0daa43a33cf314098820341179206))
+* implement more styling options ([6d46e82](https://github.com/danielo515/openhasp-designer/commit/6d46e8274e1ff23381b57f6ca70d7cc46e767c79))
+
+
+
 # [0.3.0](https://github.com/danielo515/openhasp-designer/compare/v0.2.0...v0.3.0) (2022-02-08)
 
 
