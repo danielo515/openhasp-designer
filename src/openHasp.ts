@@ -1,6 +1,6 @@
 import { SetOptional } from "type-fest";
 
-interface CommonHaspProps {
+export interface CommonHaspProps {
   id: number;
   page: number;
   x: number;
@@ -14,6 +14,9 @@ interface CommonHaspProps {
   border_width?: number;
   border_color?: string;
   hidden?: boolean;
+  bg_color?: string;
+  bg_grad_color?: string;
+  border_side?: number;
 }
 
 type align = "left" | "center" | "right";
