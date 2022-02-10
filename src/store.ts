@@ -74,7 +74,10 @@ export const createElement = (element: CreateArgs) => {
     const page = store.currentPage;
     switch (element.obj) {
       case "label": {
-        return [...pages, createHaspLabel({ id, page, x, y, ...element })];
+        return [
+          ...pages,
+          createHaspLabel({ ...element, id, page, x, y, w: DEFAULT_WIDTH, h: DEFAULT_HEIGHT }),
+        ];
       }
       case "btn": {
         const text = element.text;
@@ -86,9 +89,6 @@ export const createElement = (element: CreateArgs) => {
             y,
             text,
             page,
-            enabled: true,
-            toggle: false,
-            hidden: false,
             align: "center",
             mode: "expand",
             w: DEFAULT_WIDTH,

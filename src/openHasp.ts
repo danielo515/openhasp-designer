@@ -3,12 +3,12 @@ import { SetOptional } from "type-fest";
 interface CommonHaspProps {
   id: number;
   page: number;
-  x?: number;
-  y?: number;
+  x: number;
+  y: number;
   /** width  */
-  w?: number;
+  w: number;
   /** height  */
-  h?: number;
+  h: number;
   /** border radius  */
   radius?: number;
   border_width?: number;
@@ -21,7 +21,7 @@ type mode = "expand" | "break" | "dots" | "scroll" | "loop" | "crop";
 export interface HaspButton extends CommonHaspProps {
   obj: "btn";
   text: string;
-  enabled: boolean;
+  enabled?: boolean;
   toggle?: boolean;
   align: align;
   mode: mode;
