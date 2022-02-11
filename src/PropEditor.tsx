@@ -1,4 +1,5 @@
 import { Component, For, Show } from "solid-js";
+import { mapNameToColor } from "./mapColors";
 import { setStore, store } from "./store";
 
 interface PropEditorProps {
@@ -13,7 +14,7 @@ const TextInput = (p) => {
 };
 
 const ColorInput = (p) => {
-  return <input class="input input-sm" type="color" {...p} />;
+  return <input class="input input-sm" type="color" {...p} value={mapNameToColor(p.value)} />;
 };
 
 const BaseComponents = [
@@ -25,6 +26,7 @@ const BaseComponents = [
   { label: "Radius", component: NumberInput, prop: "radius" },
   { label: "Border width", component: NumberInput, prop: "border_width" },
   { label: "Border color", component: ColorInput, prop: "border_color" },
+  { label: "Text color", component: ColorInput, prop: "text_color" },
 ] as const;
 
 export const PropEditor: Component<PropEditorProps> = (p) => {
@@ -39,12 +41,7 @@ export const PropEditor: Component<PropEditorProps> = (p) => {
                 <Component
                   value={store.currentElement[prop]}
                   onChange={(e) =>
-                    setStore(
-                      "pages",
-                      store.currentElement.index,
-                      prop,
-                      e.currentTarget.value
-                    )
+                    setStore("pages", store.currentElement.index, prop, e.currentTarget.value)
                   }
                 />
               </div>

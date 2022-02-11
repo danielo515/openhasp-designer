@@ -73,7 +73,7 @@ const App: Component = () => {
         <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
           <CreateControls createElement={createElement} />
         </div>
-        <div class="h-2/3 p-4 border-cyan-700 border-t-2 bg-gray-600 shadow-inner">
+        <div class="h-2/3 p-4 border-cyan-700 border-t-2 bg-gray-600 shadow-inner overflow-y-auto">
           <PropEditor />
         </div>
       </div>

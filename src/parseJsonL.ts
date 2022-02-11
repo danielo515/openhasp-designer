@@ -1,11 +1,9 @@
 const parser = (key, value) => {
-  if (key !== "text") {
-    return value;
+  if (key === "text") {
+    value = value.replace(/[\uE000-\uFFFF]/g, function (chr) {
+      return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4);
+    });
   }
-  value = value.replace(/[\uE000-\uFFFF]/g, function (chr) {
-    return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4);
-  });
-  console.log("text", value);
   return value;
 };
 

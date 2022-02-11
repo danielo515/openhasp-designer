@@ -17,6 +17,7 @@ export interface CommonHaspProps {
   bg_color?: string;
   bg_grad_color?: string;
   border_side?: number;
+  text_color?: string;
 }
 
 type align = "left" | "center" | "right";
