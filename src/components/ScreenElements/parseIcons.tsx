@@ -1,4 +1,4 @@
-export const iconRegex = /\\u[A-F0-9]{4,5}/g;
+export const iconRegex = /\\u[A-F0-9]{4,5}/gi;
 
 /**
  * Translates the icon hexadecimal value that openHasp uses to a unicode character
