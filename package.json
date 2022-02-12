@@ -3,6 +3,7 @@
   "version": "0.8.0",
   "description": "",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
