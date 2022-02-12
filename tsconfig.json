@@ -8,6 +8,7 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "noEmit": true,
+    "resolveJsonModule": true,
     "types": [
       "vite/client"
     ]

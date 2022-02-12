@@ -65,10 +65,9 @@ const App: Component = () => {
           </Card>
         </div>
       </div>
-      <footer class="p-2 footer bg-neutral text-neutral-content z-10">
-        <div>
-          <p>Danielo Rodriguez 2022</p>
-        </div>
+      <footer class="items-center p-2 footer bg-neutral text-neutral-content">
+        <div class="items-center grid-flow-col">Danielo Rodriguez 2022</div>
+        <div class="grid-flow-col gap-4 md:justify-self-end">Ver: {__APP_VERSION__}</div>
       </footer>
     </>
   );
