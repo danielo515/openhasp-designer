@@ -20,6 +20,7 @@ import {
 import { PropEditor } from "./PropEditor";
 import { ScreenLabel } from "./components/ScreenElements/ScreenLabel";
 import { Tab, Tabs } from "./components/Tabs/Tabs";
+import { Card, CardHeader } from "./components/Card";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -58,17 +59,21 @@ const App: Component = () => {
             value={store.jsonL}
           />
         </main>
-        <div class="w-full h-full border-l-2 border-base-200">
-          <Tabs class="-ml-px">
-            <Tab isActive>Controls</Tab>
-            <Tab>Settings</Tab>
-          </Tabs>
-          <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
-            <CreateControls createElement={createElement} />
-          </div>
-          <div class="h-2/3 border-base-200 border-t-2 bg-gray-600 shadow-inner flex">
+        <div class="w-full h-full flex flex-col">
+          <Card class="flex-1 border-t-0" layout="column">
+            <CardHeader>
+              <Tabs class="-ml-px">
+                <Tab isActive>Controls</Tab>
+                <Tab>Settings</Tab>
+              </Tabs>
+            </CardHeader>
+            <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
+              <CreateControls createElement={createElement} />
+            </div>
+          </Card>
+          <Card class="h-2/3 bg-gray-600" layout="row" borders={{ top: false }}>
             <PropEditor />
-          </div>
+          </Card>
         </div>
       </div>
       <footer class="p-2 footer bg-neutral text-neutral-content z-10">

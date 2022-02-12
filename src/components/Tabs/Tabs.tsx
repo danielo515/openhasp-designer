@@ -6,7 +6,7 @@ interface TabsProps {
 
 export const Tabs: Component<TabsProps> = (p) => {
   return (
-    <div class={`tabs ${p.class}`}>
+    <div class={`tabs ${p.class}`} style="--tab-border: 0px;">
       {p.children}
       <a class="tab tab-lifted flex-1"></a>
     </div>
