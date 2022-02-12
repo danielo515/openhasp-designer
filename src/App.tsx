@@ -19,6 +19,7 @@ import {
 } from "./store";
 import { PropEditor } from "./PropEditor";
 import { ScreenLabel } from "./components/ScreenElements/ScreenLabel";
+import { Tab, Tabs } from "./components/Tabs/Tabs";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -57,7 +58,11 @@ const App: Component = () => {
             value={store.jsonL}
           />
         </main>
-        <div class="w-full h-full border-l-2 border-base-200 ">
+        <div class="w-full h-full border-l-2 border-base-200">
+          <Tabs class="-ml-px">
+            <Tab isActive>Controls</Tab>
+            <Tab>Settings</Tab>
+          </Tabs>
           <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
             <CreateControls createElement={createElement} />
           </div>
@@ -66,7 +71,7 @@ const App: Component = () => {
           </div>
         </div>
       </div>
-      <footer class="p-2 footer bg-neutral text-neutral-content">
+      <footer class="p-2 footer bg-neutral text-neutral-content z-10">
         <div>
           <p>Danielo Rodriguez 2022</p>
         </div>
