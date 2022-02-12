@@ -27,6 +27,7 @@ const BaseComponents = [
   { label: "Border width", component: NumberInput, prop: "border_width" },
   { label: "Border color", component: ColorInput, prop: "border_color" },
   { label: "Text color", component: ColorInput, prop: "text_color" },
+  { label: "Background color", component: ColorInput, prop: "bg_color" },
 ] as const;
 
 export const PropEditor: Component<PropEditorProps> = (p) => {
