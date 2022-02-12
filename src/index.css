@@ -29,7 +29,7 @@ footer {
 }
 
 .export-area {
-  @apply textarea w-full flex-1 resize-none font-mono p-1;
+  @apply textarea w-full flex-1 resize-none font-mono p-1 textarea-bordered;
   line-height: 1rem;
 }
 
