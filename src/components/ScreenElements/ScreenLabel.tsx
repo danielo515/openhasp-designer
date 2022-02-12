@@ -10,11 +10,11 @@ interface ScreenLabelProps {
   w: number;
   h: number;
   text: string;
-  radius: number;
   page: number;
   id: number;
-  border_width: number;
-  border_color: string;
+  radius?: number;
+  border_width?: number;
+  border_color?: string;
   onClick: () => void;
 }
 
