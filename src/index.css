@@ -10,11 +10,19 @@ html {
 :root {
   --button-border-color: rgb(70, 159, 175);
   --divider-color: rgb(14 116 144 / var(--tw-border-opacity));
+  --footer-height: 2rem;
 }
 
 .main-wrapper {
-  @apply bg-gray-700 h-full w-full columns-2 text-white;
+  height: calc(100% - var(--footer-height));
+  @apply bg-gray-700 w-full columns-2 text-white;
 }
+
+footer {
+  height: var(--footer-height);
+  @apply flex items-center justify-center;
+}
+
 .hasp-button {
   align-items: center;
   @apply absolute flex justify-center p-2;
