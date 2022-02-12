@@ -14,7 +14,14 @@ const TextInput = (p) => {
 };
 
 const ColorInput = (p) => {
-  return <input class="input input-sm" type="color" {...p} value={mapNameToColor(p.value)} />;
+  return (
+    <input
+      class="input input-sm"
+      type="color"
+      {...p}
+      value={mapNameToColor(p.value) ?? "#000000"}
+    />
+  );
 };
 
 const BaseComponents = [

@@ -1,5 +1,6 @@
-import { Component, For, mergeProps } from "solid-js";
+import { Component, For, mergeProps, Show } from "solid-js";
 import { store } from "../../store";
+import { DeleteElement } from "./DeleteElement";
 import { makeStyles } from "./makeStyles";
 import { parseIcons } from "./parseIcons";
 
@@ -29,6 +30,9 @@ export const ScreenLabel: Component<ScreenLabelProps> = (p) => {
       style={styles()}
       onClick={p.onClick}
     >
+      <Show when={isSelected()}>
+        <DeleteElement onClick={() => console.log("delete")} />
+      </Show>
       <For each={parseIcons(p.text)}>{(icon) => icon}</For>
     </button>
   );
