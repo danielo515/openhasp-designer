@@ -115,6 +115,7 @@ export const deleteHaspElement = ({ page, id }: SelectedElement) => {
       ({ id: elementId, page: elementPage }) => !(id === elementId && page === elementPage)
     )
   );
+  setStore("selectedElement", { id: 0, page: 1 });
 };
 
 export const compile = () => {
