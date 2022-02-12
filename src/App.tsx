@@ -1,24 +1,11 @@
-import SelectLayout from "./SelectLayout";
+import ScreenArea from "./ScreenArea";
 import { CreateControls } from "./CreateControls";
-import { Component, createSignal, For, Match, Switch } from "solid-js";
+import { Component, createSignal, Match, Switch } from "solid-js";
 import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
-import { NavigatePages } from "./components/NavigatePages";
-import { ScreenButton } from "./components/ScreenElements/ScreenButton";
-import Row from "./components/Row";
-import { getScreenDimensions, Screen } from "./components/Screen";
-import {
-  store,
-  nextPage,
-  prevPage,
-  createElement,
-  compile,
-  setLayout,
-  importJsonL,
-  selectHaspElement,
-} from "./store";
+import { getScreenDimensions } from "./components/Screen";
+import { store, createElement, compile, setLayout, importJsonL } from "./store";
 import { PropEditor } from "./PropEditor";
-import { ScreenLabel } from "./components/ScreenElements/ScreenLabel";
 import { Tab, Tabs } from "./components/Tabs/Tabs";
 import { Card, CardHeader } from "./components/Card";
 import { navigateTopFrame, router } from "./router";
@@ -30,23 +17,7 @@ const App: Component = () => {
     <>
       <div class="main-wrapper">
         <main class="w-full h-full p-4 flex flex-col items-center">
-          <Row>
-            <SelectLayout setLayout={setLayout} layout={layout} />
-            <NavigatePages currentPage={store.currentPage} onNext={nextPage} onPrev={prevPage} />
-          </Row>
-          <Screen {...layout()}>
-            <For each={store.currentPageElements}>
-              {(element) => {
-                const onClick = () => selectHaspElement({ id: element.id, page: element.page });
-                switch (element.obj) {
-                  case "btn":
-                    return <ScreenButton {...element} onClick={onClick} />;
-                  case "label":
-                    return <ScreenLabel {...element} onClick={onClick} />;
-                }
-              }}
-            </For>
-          </Screen>
+          <ScreenArea layout={layout} />
           <ButtonsBottom>
             <Button label="Import" variant="primary" onClick={() => importJsonL(jsonL())} />
             <Button label="Export" variant="primary" onClick={compile} />
