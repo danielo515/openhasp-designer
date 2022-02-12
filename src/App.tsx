@@ -1,3 +1,4 @@
+import SelectLayout from "./SelectLayout";
 import { CreateControls } from "./CreateControls";
 import { Component, createSignal, For } from "solid-js";
 import { Button } from "./components/Button";
@@ -27,21 +28,7 @@ const App: Component = () => {
       <div class="main-wrapper">
         <main class="w-full h-full p-4 flex flex-col items-center">
           <Row>
-            <select
-              value={layout().tag}
-              class="select"
-              onChange={(e) => {
-                console.log(e.currentTarget.value);
-                if (e.currentTarget.value === "horizontal") {
-                  setLayout("horizontal");
-                } else {
-                  setLayout("vertical");
-                }
-              }}
-            >
-              <option value="vertical">Vertical</option>
-              <option value="horizontal">Horizontal</option>
-            </select>
+            <SelectLayout setLayout={setLayout} layout={layout} />
             <NavigatePages currentPage={store.currentPage} onNext={nextPage} onPrev={prevPage} />
           </Row>
           <Screen {...layout()}>
