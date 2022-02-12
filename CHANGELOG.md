@@ -1,3 +1,15 @@
+# [0.5.0](https://github.com/danielo515/openhasp-designer/compare/v0.4.0...v0.5.0) (2022-02-12)
+
+
+### Features
+
+* common makeStyles function ([40c4966](https://github.com/danielo515/openhasp-designer/commit/40c49666f1abc1e330a53de6e5b7709c083e1399))
+* DeleteElement button ([25b626f](https://github.com/danielo515/openhasp-designer/commit/25b626f803adbe8971249e84f3d4515137f6b35d))
+* parse unicode properly ([e632033](https://github.com/danielo515/openhasp-designer/commit/e632033393fa22f4d0a6a2b64e50db65c33b0829))
+* translate named colors to HEX ([f1ac8c4](https://github.com/danielo515/openhasp-designer/commit/f1ac8c4fc7e4c7bf8de193d5731b65fa89a08dcd))
+
+
+
 # [0.4.0](https://github.com/danielo515/openhasp-designer/compare/v0.3.0...v0.4.0) (2022-02-10)
 
 
