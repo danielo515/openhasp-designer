@@ -37,9 +37,17 @@ const BaseComponents = [
   { label: "Background color", component: ColorInput, prop: "bg_color" },
 ] as const;
 
+const Nothing: Component = () => {
+  return (
+    <div class="h-full w-full flex items-center justify-center text-2xl bg-base-200">
+      <h1>No element selected</h1>
+    </div>
+  );
+};
+
 export const PropEditor: Component<PropEditorProps> = (p) => {
   return (
-    <Show when={store.currentElement}>
+    <Show when={store.currentElement} fallback={<Nothing />}>
       {(current) => (
         <>
           <div class="p-4 bg-base-200">ID: {current.id} </div>

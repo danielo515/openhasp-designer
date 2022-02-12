@@ -5,7 +5,8 @@ export function CreateControls({ createElement }) {
     <>
       <Button
         label="Button"
-        variant="primary"
+        variant="default"
+        size="md"
         onClick={() => {
           createElement({
             text: "Button",
@@ -15,6 +16,7 @@ export function CreateControls({ createElement }) {
       />
       <Button
         label="Label"
+        size="md"
         variant="default"
         onClick={() => {
           createElement({
