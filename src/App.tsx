@@ -1,6 +1,6 @@
 import SelectLayout from "./SelectLayout";
 import { CreateControls } from "./CreateControls";
-import { Component, createSignal, For } from "solid-js";
+import { Component, createSignal, For, Match, Switch } from "solid-js";
 import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { NavigatePages } from "./components/NavigatePages";
@@ -21,6 +21,7 @@ import { PropEditor } from "./PropEditor";
 import { ScreenLabel } from "./components/ScreenElements/ScreenLabel";
 import { Tab, Tabs } from "./components/Tabs/Tabs";
 import { Card, CardHeader } from "./components/Card";
+import { navigateTopFrame, router } from "./router";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -63,12 +64,29 @@ const App: Component = () => {
           <Card class="flex-1 border-t-0" layout="column">
             <CardHeader>
               <Tabs class="-ml-px">
-                <Tab isActive>Controls</Tab>
-                <Tab>Settings</Tab>
+                <Tab
+                  isActive={router.topFrame == "controls"}
+                  onClick={() => navigateTopFrame("controls")}
+                >
+                  Controls
+                </Tab>
+                <Tab
+                  isActive={router.topFrame == "settings"}
+                  onClick={() => navigateTopFrame("settings")}
+                >
+                  Settings
+                </Tab>
               </Tabs>
             </CardHeader>
             <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
-              <CreateControls createElement={createElement} />
+              <Switch>
+                <Match when={router.topFrame === "controls"}>
+                  <CreateControls createElement={createElement} />
+                </Match>
+                <Match when={router.topFrame === "settings"}>
+                  <div class="">Settings</div>
+                </Match>
+              </Switch>
             </div>
           </Card>
           <Card class="h-2/3 bg-gray-600" layout="row" borders={{ top: false }}>
