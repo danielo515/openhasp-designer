@@ -109,6 +109,14 @@ export const selectHaspElement = ({ page, id }: SelectedElement) => {
   setStore("selectedElement", { page, id });
 };
 
+export const deleteHaspElement = ({ page, id }: SelectedElement) => {
+  setStore("pages", (pages) =>
+    pages.filter(
+      ({ id: elementId, page: elementPage }) => !(id === elementId && page === elementPage)
+    )
+  );
+};
+
 export const compile = () => {
   const output = toJsonL(store.pages);
   setStore("jsonL", output);

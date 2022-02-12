@@ -1,5 +1,5 @@
 import { Component, For, mergeProps, Show } from "solid-js";
-import { store } from "../../store";
+import { deleteHaspElement, store } from "../../store";
 import { DeleteElement } from "./DeleteElement";
 import { makeStyles } from "./makeStyles";
 import { parseIcons } from "./parseIcons";
@@ -38,7 +38,7 @@ export const ScreenButton: Component<ScreenButtonProps> = (p) => {
       onClick={p.onClick}
     >
       <Show when={isSelected()}>
-        <DeleteElement onClick={() => console.log("delete")} />
+        <DeleteElement onClick={() => deleteHaspElement({ page: p.page, id: p.id })} />
       </Show>
       <For each={parseIcons(p.text)}>{(icon) => icon}</For>
     </button>
