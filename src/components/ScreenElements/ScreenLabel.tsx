@@ -1,5 +1,6 @@
-import { Component, For } from "solid-js";
+import { Component, For, mergeProps } from "solid-js";
 import { store } from "../../store";
+import { makeStyles } from "./makeStyles";
 import { parseIcons } from "./parseIcons";
 
 interface ScreenLabelProps {
@@ -17,15 +18,7 @@ interface ScreenLabelProps {
 }
 
 export const ScreenLabel: Component<ScreenLabelProps> = (p) => {
-  const styles = () => `
-    top: ${p.y}px; 
-    left: ${p.x}px; 
-    width: ${p.w}px; 
-    height: ${p.h}px;
-    border-radius: ${p.radius}px;
-    border-width: ${p.border_width}px;
-    border-color: ${p.border_color};
-    `;
+  const styles = makeStyles(p);
   const isSelected = () => {
     return store.selectedElement.id === p.id && store.selectedElement.page === p.page;
   };
