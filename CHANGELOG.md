@@ -1,3 +1,13 @@
+# [0.7.0](https://github.com/danielo515/openhasp-designer/compare/v0.6.0...v0.7.0) (2022-02-12)
+
+
+### Features
+
+* NothingSelected fallback ([8d17104](https://github.com/danielo515/openhasp-designer/commit/8d17104d813d4aa9a1cfed51475fbdeea9958c80))
+* tabs ([0ba1677](https://github.com/danielo515/openhasp-designer/commit/0ba167787698054e0b29fd62ef696b8911307b7c))
+
+
+
 # [0.6.0](https://github.com/danielo515/openhasp-designer/compare/v0.5.0...v0.6.0) (2022-02-12)
 
 
@@ -36,15 +46,6 @@
 ### Features
 
 * icons support ([7ff71f8](https://github.com/danielo515/openhasp-designer/commit/7ff71f852468206921a3f7f87df6b82b1cdce333))
-
-
-
-# [0.2.0](https://github.com/danielo515/openhasp-designer/compare/v0.1.0...v0.2.0) (2022-02-08)
-
-
-### Features
-
-* added icons font ([268fd19](https://github.com/danielo515/openhasp-designer/commit/268fd19e2a092f1928794a68fb83d986b4e38fce))
 
 
 
