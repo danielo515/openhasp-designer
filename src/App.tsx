@@ -70,11 +70,11 @@ const App: Component = () => {
             value={store.jsonL}
           />
         </main>
-        <div class="w-full h-full border-l-2 border-cyan-700 ">
+        <div class="w-full h-full border-l-2 border-base-200 ">
           <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
             <CreateControls createElement={createElement} />
           </div>
-          <div class="h-2/3 p-4 border-cyan-700 border-t-2 bg-gray-600 shadow-inner overflow-y-auto">
+          <div class="h-2/3 border-base-200 border-t-2 bg-gray-600 shadow-inner flex">
             <PropEditor />
           </div>
         </div>

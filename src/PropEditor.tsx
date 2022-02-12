@@ -40,24 +40,29 @@ const BaseComponents = [
 export const PropEditor: Component<PropEditorProps> = (p) => {
   return (
     <Show when={store.currentElement}>
-      <div>
-        <For each={BaseComponents}>
-          {({ component: Component, prop, label }) => (
-            <>
-              <div class="flex space-x-2 items-center justify-between">
-                <label class="label font-thin">{label}</label>
-                <Component
-                  value={store.currentElement[prop]}
-                  onChange={(e) =>
-                    setStore("pages", store.currentElement.index, prop, e.currentTarget.value)
-                  }
-                />
-              </div>
-              <div class="divider" />
-            </>
-          )}
-        </For>
-      </div>
+      {(current) => (
+        <>
+          <div class="p-4 bg-base-200">ID: {current.id} </div>
+          <div class="p-4 overflow-y-auto flex-1">
+            <For each={BaseComponents}>
+              {({ component: Component, prop, label }) => (
+                <>
+                  <div class="flex space-x-2 items-center justify-between">
+                    <label class="label font-thin">{label}</label>
+                    <Component
+                      value={current[prop]}
+                      onChange={(e) =>
+                        setStore("pages", current.index, prop, e.currentTarget.value)
+                      }
+                    />
+                  </div>
+                  <div class="divider" />
+                </>
+              )}
+            </For>
+          </div>
+        </>
+      )}
     </Show>
   );
 };
