@@ -51,14 +51,14 @@ export const prevPage = () => {
 
 const getDefaultX = (position: number, columns: number) => {
   const column = Math.round(position % columns);
-  const padding = store.settings.padding + column;
+  const padding = store.settings.padding * (column + 1);
   const x = store.settings.defaultWidth * column + padding;
   return x;
 };
 
 const getDefaultY = (position: number, columns: number) => {
   const row = Math.floor(position / columns);
-  const padding = store.settings.padding + row;
+  const padding = store.settings.padding * (row + 1);
   const y = store.settings.defaultHeight * row + padding;
   return y;
 };
@@ -70,7 +70,7 @@ export const createElement = (element: CreateArgs) => {
     const id = getNextId(store.currentPage, pages);
     const layout = getScreenDimensions(store.layout);
     const { defaultWidth: width, defaultHeight: height } = store.settings;
-    const columns = Math.round(layout.width / width);
+    const columns = Math.floor(layout.width / (width + store.settings.padding));
     const x = getDefaultX(id - 1, columns);
     const y = getDefaultY(id - 1, columns);
     const page = store.currentPage;
