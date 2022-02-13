@@ -2,7 +2,7 @@ import { Button } from "./components/Button";
 
 export function CreateControls({ createElement }) {
   return (
-    <>
+    <div class="grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
       <Button
         label="Button"
         variant="default"
@@ -25,6 +25,6 @@ export function CreateControls({ createElement }) {
           });
         }}
       />
-    </>
+    </div>
   );
 }

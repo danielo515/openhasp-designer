@@ -4,7 +4,7 @@ import { ScreenLabel } from "./components/ScreenElements/ScreenLabel";
 import { ScreenButton } from "./components/ScreenElements/ScreenButton";
 import { NavigatePages } from "./components/NavigatePages";
 import SelectLayout from "./SelectLayout";
-import { store, nextPage, prevPage, setLayout, selectHaspElement } from "./store";
+import { store, nextPage, prevPage, setLayout, selectHaspElement } from "./store/store";
 import { For } from "solid-js";
 
 export default function ScreenArea({ layout }) {

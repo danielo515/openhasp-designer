@@ -1,9 +1,9 @@
 import { createStore } from "solid-js/store";
-import { DEFAULT_HEIGHT, DEFAULT_PADDING, DEFAULT_WIDTH } from "./constants";
-import { createButton, createHaspLabel, HaspButton, HaspLabel } from "./openHasp";
-import { parseJsonL } from "./parseJsonL";
-import { getScreenDimensions, HaspScreenOrientation, Layout } from "./components/Screen";
-import { toJsonL } from "./toJsonL";
+import { createButton, createHaspLabel, HaspButton, HaspLabel } from "../openHasp";
+import { parseJsonL } from "../parseJsonL";
+import { getScreenDimensions, HaspScreenOrientation, Layout } from "../components/Screen";
+import { toJsonL } from "../toJsonL";
+import { initialSettings } from "./settings";
 
 type PageElement = HaspButton | HaspLabel;
 type SelectedElement = { page: number; id: number };
@@ -13,6 +13,7 @@ const initialState = {
   pages: [] as PageElement[],
   layout: "horizontal" as HaspScreenOrientation,
   jsonL: "",
+  settings: initialSettings,
   selectedElement: { id: 0, page: 1 } as SelectedElement,
   get currentElement() {
     const idx = store.pages.findIndex(
@@ -50,15 +51,15 @@ export const prevPage = () => {
 
 const getDefaultX = (position: number, columns: number) => {
   const column = Math.round(position % columns);
-  const padding = DEFAULT_PADDING + column;
-  const x = DEFAULT_WIDTH * column + padding;
+  const padding = store.settings.padding + column;
+  const x = store.settings.defaultWidth * column + padding;
   return x;
 };
 
 const getDefaultY = (position: number, columns: number) => {
   const row = Math.floor(position / columns);
-  const padding = DEFAULT_PADDING + row;
-  const y = DEFAULT_HEIGHT * row + padding;
+  const padding = store.settings.padding + row;
+  const y = store.settings.defaultHeight * row + padding;
   return y;
 };
 
@@ -68,7 +69,8 @@ export const createElement = (element: CreateArgs) => {
   setStore("pages", (pages) => {
     const id = getNextId(store.currentPage, pages);
     const layout = getScreenDimensions(store.layout);
-    const columns = Math.round(layout.width / DEFAULT_WIDTH);
+    const { defaultWidth: width, defaultHeight: height } = store.settings;
+    const columns = Math.round(layout.width / width);
     const x = getDefaultX(id - 1, columns);
     const y = getDefaultY(id - 1, columns);
     const page = store.currentPage;
@@ -76,7 +78,15 @@ export const createElement = (element: CreateArgs) => {
       case "label": {
         return [
           ...pages,
-          createHaspLabel({ ...element, id, page, x, y, w: DEFAULT_WIDTH, h: DEFAULT_HEIGHT }),
+          createHaspLabel({
+            ...element,
+            id,
+            page,
+            x,
+            y,
+            w: width,
+            h: height,
+          }),
         ];
       }
       case "btn": {
@@ -91,8 +101,8 @@ export const createElement = (element: CreateArgs) => {
             page,
             align: "center",
             mode: "expand",
-            w: DEFAULT_WIDTH,
-            h: DEFAULT_HEIGHT,
+            w: width,
+            h: height,
           }),
         ];
       }

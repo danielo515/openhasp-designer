@@ -1,5 +1,5 @@
 import { Component, For, mergeProps, Show } from "solid-js";
-import { deleteHaspElement, store } from "../../store";
+import { deleteHaspElement, store } from "../../store/store";
 import { DeleteElement } from "./DeleteElement";
 import { makeStyles } from "./makeStyles";
 import { parseIcons } from "./parseIcons";

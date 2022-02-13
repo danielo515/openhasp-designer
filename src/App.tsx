@@ -4,11 +4,12 @@ import { Component, createSignal, Match, Switch } from "solid-js";
 import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { getScreenDimensions } from "./components/Screen";
-import { store, createElement, compile, setLayout, importJsonL } from "./store";
+import { store, createElement, compile, setLayout, importJsonL } from "./store/store";
 import { PropEditor } from "./PropEditor";
 import { Tab, Tabs } from "./components/Tabs/Tabs";
 import { Card, CardHeader } from "./components/Card";
 import { navigateTopFrame, router } from "./router";
+import { Settings } from "./Settings";
 
 const App: Component = () => {
   const [jsonL, setJsonL] = createSignal("");
@@ -49,13 +50,13 @@ const App: Component = () => {
                 </Tab>
               </Tabs>
             </CardHeader>
-            <div class="h-1/3 p-4 grid sm:grid-cols-5 sm:gap-1 grid-cols-2 gap-2 ">
+            <div class="p-4 h-full">
               <Switch>
                 <Match when={router.topFrame === "controls"}>
                   <CreateControls createElement={createElement} />
                 </Match>
                 <Match when={router.topFrame === "settings"}>
-                  <div class="">Settings</div>
+                  <Settings />
                 </Match>
               </Switch>
             </div>

@@ -1,6 +1,6 @@
 import { Component, For, Show } from "solid-js";
 import { mapNameToColor } from "./mapColors";
-import { setStore, store } from "./store";
+import { setStore, store } from "./store/store";
 
 interface PropEditorProps {
   // add props here
