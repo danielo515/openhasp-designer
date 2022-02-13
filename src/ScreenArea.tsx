@@ -6,6 +6,7 @@ import { NavigatePages } from "./components/NavigatePages";
 import SelectLayout from "./SelectLayout";
 import { store, nextPage, prevPage, setLayout, selectHaspElement } from "./store/store";
 import { For } from "solid-js";
+import { ScreenSwitch } from "./components/ScreenElements/ScreenSwitch";
 
 export default function ScreenArea({ layout }) {
   return (
@@ -29,6 +30,8 @@ export default function ScreenArea({ layout }) {
 
               case "label":
                 return <ScreenLabel {...element} onClick={onClick} />;
+              case "switch":
+                return <ScreenSwitch {...element} onClick={onClick} />;
             }
           }}
         </For>

@@ -25,6 +25,16 @@ export function CreateControls({ createElement }) {
           });
         }}
       />
+      <Button
+        label="Switch"
+        size="md"
+        variant="default"
+        onClick={() => {
+          createElement({
+            obj: "switch",
+          });
+        }}
+      />
     </div>
   );
 }

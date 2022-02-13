@@ -29,7 +29,8 @@ footer {
   @apply flex items-center justify-center;
 }
 
-.hasp-button {
+.hasp-button,
+.hasp-screen-item {
   align-items: center;
   @apply absolute flex justify-center p-2;
 }

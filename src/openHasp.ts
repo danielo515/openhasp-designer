@@ -37,6 +37,12 @@ export interface HaspLabel extends CommonHaspProps {
   text: string;
   obj: "label";
 }
+export interface HaspSwitch extends CommonHaspProps {
+  obj: "switch";
+  bg_color1: string;
+  bg_color2: string;
+  radius2: number;
+}
 
 function createBasicObject({
   id,
@@ -48,7 +54,7 @@ function createBasicObject({
   page,
   border_width,
   border_color,
-  hidden = false,
+  hidden,
 }: CommonHaspProps): CommonHaspProps {
   return {
     id,
@@ -93,5 +99,18 @@ export function createHaspLabel(args: LabelInput): HaspLabel {
     obj: "label",
     align,
     mode,
+  };
+}
+
+type SwitchInput = Omit<SetOptional<HaspSwitch, "radius2" | "bg_color1" | "bg_color2">, "obj">;
+
+export function createHaspSwitch(args: SwitchInput): HaspSwitch {
+  const { radius2, bg_color1, bg_color2 } = args;
+  return {
+    ...createBasicObject(args),
+    obj: "switch",
+    radius2,
+    bg_color1,
+    bg_color2,
   };
 }

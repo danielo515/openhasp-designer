@@ -25,7 +25,7 @@ const ColorInput = (p) => {
 };
 
 const BaseComponents = [
-  { label: "Text", component: TextInput, prop: "text" },
+  // { label: "Text", component: TextInput, prop: "text" },
   { label: "Position x", component: NumberInput, prop: "x" },
   { label: "Position y", component: NumberInput, prop: "y" },
   { label: "Height", component: NumberInput, prop: "h" },
@@ -45,6 +45,15 @@ const Nothing: Component = () => {
   );
 };
 
+const Row: Component<{ label: string }> = (p) => {
+  return (
+    <div class="flex space-x-2 items-center justify-between">
+      <label class="label font-thin">{p.label}</label>
+      {p.children}
+    </div>
+  );
+};
+
 export const PropEditor: Component<PropEditorProps> = (p) => {
   return (
     <Show when={store.currentElement} fallback={<Nothing />}>
@@ -55,19 +64,27 @@ export const PropEditor: Component<PropEditorProps> = (p) => {
             <For each={BaseComponents}>
               {({ component: Component, prop, label }) => (
                 <>
-                  <div class="flex space-x-2 items-center justify-between">
-                    <label class="label font-thin">{label}</label>
+                  <Row label={label}>
                     <Component
                       value={current[prop]}
                       onChange={(e) =>
                         setStore("pages", current.index, prop, e.currentTarget.value)
                       }
                     />
-                  </div>
+                  </Row>
                   <div class="divider" />
                 </>
               )}
             </For>
+            <Show when={current.obj === "btn"}>
+              <Row label="Text">
+                <TextInput
+                  //@ts-expect-error I don't know how to properly narrow this down
+                  value={current.text}
+                  onChange={(e) => setStore("pages", current.index, "text", e.currentTarget.value)}
+                />
+              </Row>
+            </Show>
           </div>
         </>
       )}
