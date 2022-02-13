@@ -1,3 +1,12 @@
+# [0.9.0](https://github.com/danielo515/openhasp-designer/compare/v0.8.0...v0.9.0) (2022-02-13)
+
+
+### Features
+
+* add real settings ([2bb4c32](https://github.com/danielo515/openhasp-designer/commit/2bb4c324ac11453c8b8484bdaa74c5f70ebe29cb))
+
+
+
 # [0.8.0](https://github.com/danielo515/openhasp-designer/compare/v0.7.0...v0.8.0) (2022-02-12)
 
 
@@ -36,16 +45,6 @@
 * DeleteElement button ([25b626f](https://github.com/danielo515/openhasp-designer/commit/25b626f803adbe8971249e84f3d4515137f6b35d))
 * parse unicode properly ([e632033](https://github.com/danielo515/openhasp-designer/commit/e632033393fa22f4d0a6a2b64e50db65c33b0829))
 * translate named colors to HEX ([f1ac8c4](https://github.com/danielo515/openhasp-designer/commit/f1ac8c4fc7e4c7bf8de193d5731b65fa89a08dcd))
-
-
-
-# [0.4.0](https://github.com/danielo515/openhasp-designer/compare/v0.3.0...v0.4.0) (2022-02-10)
-
-
-### Features
-
-* add label types ([99b4319](https://github.com/danielo515/openhasp-designer/commit/99b4319d0db0daa43a33cf314098820341179206))
-* implement more styling options ([6d46e82](https://github.com/danielo515/openhasp-designer/commit/6d46e8274e1ff23381b57f6ca70d7cc46e767c79))
 
 
 
