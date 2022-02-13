@@ -17,7 +17,7 @@ const App: Component = () => {
   return (
     <>
       <div class="main-wrapper">
-        <main class="w-full h-full p-4 flex flex-col items-center">
+        <main class="w-full h-full p-4 pt-2 flex flex-col items-center">
           <ScreenArea layout={layout} />
           <ButtonsBottom>
             <Button label="Import" variant="primary" onClick={() => importJsonL(jsonL())} />

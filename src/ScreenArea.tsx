@@ -10,7 +10,7 @@ import { For } from "solid-js";
 export default function ScreenArea({ layout }) {
   return (
     <>
-      <Row class="items-end">
+      <Row class="items-end py-4 justify-around">
         <SelectLayout setLayout={setLayout} layout={layout} />
         <NavigatePages currentPage={store.currentPage} onNext={nextPage} onPrev={prevPage} />
       </Row>
