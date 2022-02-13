@@ -20,6 +20,7 @@ html {
 
 .main-wrapper {
   flex: 2;
+  min-height: 90%;
   @apply bg-gray-700 w-full text-white flex;
 }
 
