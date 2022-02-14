@@ -7,6 +7,7 @@ import SelectLayout from "./SelectLayout";
 import { store, nextPage, prevPage, setLayout, selectHaspElement } from "./store/store";
 import { For } from "solid-js";
 import { ScreenSwitch } from "./components/ScreenElements/ScreenSwitch";
+import { ScreenBasicObj } from "./components/ScreenElements/ScreenBasicObj";
 
 export default function ScreenArea({ layout }) {
   return (
@@ -27,9 +28,10 @@ export default function ScreenArea({ layout }) {
             switch (element.obj) {
               case "btn":
                 return <ScreenButton {...element} onClick={onClick} />;
-
               case "label":
                 return <ScreenLabel {...element} onClick={onClick} />;
+              case "obj":
+                return <ScreenBasicObj {...element} onClick={onClick} />;
               case "switch":
                 return <ScreenSwitch {...element} onClick={onClick} />;
             }

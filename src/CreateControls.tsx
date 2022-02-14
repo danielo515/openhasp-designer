@@ -35,6 +35,16 @@ export function CreateControls({ createElement }) {
           });
         }}
       />
+      <Button
+        label="Basic"
+        variant="default"
+        size="md"
+        onClick={() => {
+          createElement({
+            obj: "obj",
+          });
+        }}
+      />
     </div>
   );
 }

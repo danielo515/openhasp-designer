@@ -5,7 +5,7 @@ import { Component, createSignal, Match, Switch } from "solid-js";
 import { Button } from "./components/Button";
 import { ButtonsBottom } from "./components/ButtonsBottom";
 import { getScreenDimensions } from "./components/Screen";
-import { store, createElement, compile, setLayout, importJsonL } from "./store/store";
+import { store, createElement, compile, importJsonL } from "./store/store";
 import { PropEditor } from "./PropEditor";
 import { Tab, Tabs } from "./components/Tabs/Tabs";
 import { Card, CardHeader } from "./components/Card";

@@ -1,5 +1,7 @@
 import { createStore } from "solid-js/store";
 import {
+  BasicObj,
+  createBasicObject,
   createButton,
   createHaspLabel,
   createHaspSwitch,
@@ -12,7 +14,7 @@ import { getScreenDimensions, HaspScreenOrientation, Layout } from "../component
 import { toJsonL } from "../toJsonL";
 import { initialSettings } from "./settings";
 
-type PageElement = HaspButton | HaspLabel | HaspSwitch;
+type PageElement = HaspButton | HaspLabel | HaspSwitch | BasicObj;
 type SelectedElement = { page: number; id: number };
 
 const initialState = {
@@ -70,7 +72,11 @@ const getDefaultY = (position: number, columns: number) => {
   return y;
 };
 
-type CreateArgs = { obj: "btn"; text: string } | { obj: "label"; text: string } | { obj: "switch" };
+type CreateArgs =
+  | { obj: "btn"; text: string }
+  | { obj: "label"; text: string }
+  | { obj: "switch" }
+  | { obj: "obj" };
 
 export const createElement = (element: CreateArgs) => {
   setStore("pages", (pages) => {
@@ -82,6 +88,8 @@ export const createElement = (element: CreateArgs) => {
     const y = getDefaultY(id - 1, columns);
     const page = store.currentPage;
     switch (element.obj) {
+      case "obj":
+        return pages.concat(createBasicObject({ id, x, y, w: width, h: height, page }));
       case "label": {
         return [
           ...pages,

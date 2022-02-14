@@ -20,6 +20,10 @@ export interface CommonHaspProps {
   text_color?: string;
 }
 
+export interface BasicObj extends CommonHaspProps {
+  obj: "obj";
+}
+
 type align = "left" | "center" | "right";
 type mode = "expand" | "break" | "dots" | "scroll" | "loop" | "crop";
 export interface HaspButton extends CommonHaspProps {
@@ -44,7 +48,7 @@ export interface HaspSwitch extends CommonHaspProps {
   radius2: number;
 }
 
-function createBasicObject({
+function createBaseObject({
   id,
   x,
   y,
@@ -70,6 +74,10 @@ function createBasicObject({
   };
 }
 
+export function createBasicObject(p: CommonHaspProps): BasicObj {
+  return { ...createBaseObject(p), obj: "obj" };
+}
+
 export function createButton({
   enabled,
   toggle,
@@ -79,7 +87,7 @@ export function createButton({
   ...base
 }: Omit<HaspButton, "obj">): HaspButton {
   return {
-    ...createBasicObject(base),
+    ...createBaseObject(base),
     text,
     enabled,
     toggle,
@@ -94,7 +102,7 @@ type LabelInput = Omit<SetOptional<HaspLabel, "align" | "mode">, "obj">;
 export function createHaspLabel(args: LabelInput): HaspLabel {
   const { text = "Label", align = "left", mode = "crop" } = args;
   return {
-    ...createBasicObject(args),
+    ...createBaseObject(args),
     text,
     obj: "label",
     align,
@@ -107,7 +115,7 @@ type SwitchInput = Omit<SetOptional<HaspSwitch, "radius2" | "bg_color1" | "bg_co
 export function createHaspSwitch(args: SwitchInput): HaspSwitch {
   const { radius2, bg_color1, bg_color2 } = args;
   return {
-    ...createBasicObject(args),
+    ...createBaseObject(args),
     obj: "switch",
     radius2,
     bg_color1,
