@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/danielo515/openhasp-designer/compare/v0.11.0...v0.12.0) (2022-02-14)
+
+
+### Features
+
+* added ProgressBar ([b640110](https://github.com/danielo515/openhasp-designer/commit/b64011011707da465c88ce80383a36f179935809))
+
+
+
 # [0.11.0](https://github.com/danielo515/openhasp-designer/compare/v0.10.0...v0.11.0) (2022-02-14)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add real settings ([2bb4c32](https://github.com/danielo515/openhasp-designer/commit/2bb4c324ac11453c8b8484bdaa74c5f70ebe29cb))
-
-
-
-# [0.8.0](https://github.com/danielo515/openhasp-designer/compare/v0.7.0...v0.8.0) (2022-02-12)
-
-
-### Features
-
-* basic top frame routing ([2fc6772](https://github.com/danielo515/openhasp-designer/commit/2fc67721d68110d8b4cb4304de48ad5c41ebce36))
 
 
 
