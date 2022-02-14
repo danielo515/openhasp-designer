@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/danielo515/openhasp-designer/compare/v0.10.0...v0.11.0) (2022-02-14)
+
+
+### Features
+
+* basic object added ([3a964c6](https://github.com/danielo515/openhasp-designer/commit/3a964c65aa95e26c36f32c252b424cb92eec6bdf))
+
+
+
 # [0.10.0](https://github.com/danielo515/openhasp-designer/compare/v0.9.1...v0.10.0) (2022-02-13)
 
 
@@ -31,16 +40,6 @@
 ### Features
 
 * basic top frame routing ([2fc6772](https://github.com/danielo515/openhasp-designer/commit/2fc67721d68110d8b4cb4304de48ad5c41ebce36))
-
-
-
-# [0.7.0](https://github.com/danielo515/openhasp-designer/compare/v0.6.0...v0.7.0) (2022-02-12)
-
-
-### Features
-
-* NothingSelected fallback ([8d17104](https://github.com/danielo515/openhasp-designer/commit/8d17104d813d4aa9a1cfed51475fbdeea9958c80))
-* tabs ([0ba1677](https://github.com/danielo515/openhasp-designer/commit/0ba167787698054e0b29fd62ef696b8911307b7c))
 
 
 
