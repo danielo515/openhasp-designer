@@ -8,6 +8,7 @@ import { store, nextPage, prevPage, setLayout, selectHaspElement } from "./store
 import { For } from "solid-js";
 import { ScreenSwitch } from "./components/ScreenElements/ScreenSwitch";
 import { ScreenBasicObj } from "./components/ScreenElements/ScreenBasicObj";
+import { ScreenProgressBar } from "./openHasp/ProgressBar";
 
 export default function ScreenArea({ layout }) {
   return (
@@ -34,6 +35,8 @@ export default function ScreenArea({ layout }) {
                 return <ScreenBasicObj {...element} onClick={onClick} />;
               case "switch":
                 return <ScreenSwitch {...element} onClick={onClick} />;
+              case "bar":
+                return <ScreenProgressBar {...element} onClick={onClick} />;
             }
           }}
         </For>

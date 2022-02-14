@@ -45,6 +45,16 @@ export function CreateControls({ createElement }) {
           });
         }}
       />
+      <Button
+        label="Progress"
+        variant="default"
+        size="md"
+        onClick={() => {
+          createElement({
+            obj: "bar",
+          });
+        }}
+      />
     </div>
   );
 }

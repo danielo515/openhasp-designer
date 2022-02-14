@@ -48,7 +48,7 @@ export interface HaspSwitch extends CommonHaspProps {
   radius2: number;
 }
 
-function createBaseObject({
+export function createBaseObject({
   id,
   x,
   y,

@@ -13,8 +13,9 @@ import { parseJsonL } from "../parseJsonL";
 import { getScreenDimensions, HaspScreenOrientation, Layout } from "../components/Screen";
 import { toJsonL } from "../toJsonL";
 import { initialSettings } from "./settings";
+import { createProgressBar, ProgressBar } from "../openHasp/ProgressBar";
 
-type PageElement = HaspButton | HaspLabel | HaspSwitch | BasicObj;
+type PageElement = HaspButton | HaspLabel | HaspSwitch | BasicObj | ProgressBar;
 type SelectedElement = { page: number; id: number };
 
 const initialState = {
@@ -76,6 +77,7 @@ type CreateArgs =
   | { obj: "btn"; text: string }
   | { obj: "label"; text: string }
   | { obj: "switch" }
+  | { obj: "bar" }
   | { obj: "obj" };
 
 export const createElement = (element: CreateArgs) => {
@@ -90,6 +92,8 @@ export const createElement = (element: CreateArgs) => {
     switch (element.obj) {
       case "obj":
         return pages.concat(createBasicObject({ id, x, y, w: width, h: height, page }));
+      case "bar":
+        return pages.concat(createProgressBar({ id, x, y, w: width, h: width / 3, page }));
       case "label": {
         return [
           ...pages,
