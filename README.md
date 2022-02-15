@@ -1,4 +1,4 @@
-# Unofficial openHaps layout designer
+# Unofficial openHasp layout designer
 
 This is a little project that aims to make creating layouts for openHasp easier.
 It is intentionally limited on the number of functionalities, as it is not meant to be a full-featured tool.
